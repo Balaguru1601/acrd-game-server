@@ -22,7 +22,10 @@ type Member struct {
 
 func main() {
 	r := gin.Default()
-	r.Use(cors.Default())
+	config := cors.DefaultConfig()
+	config.AllowOrigins = []string{"https://card-game-puce.vercel.app"}
+
+	r.Use(cors.New(config))
 
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
@@ -179,5 +182,5 @@ func main() {
 
 		c.JSON(200, gin.H{"message": "Data retrieved!", "success": true, "data": data})
 	})
-	r.Run(":8000")
+	r.Run()
 }

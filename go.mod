@@ -1,7 +1,6 @@
 module go-backend
 
-// +heroku goVersion go1.20
-go 1.20
+go 1.22.0
 
 require (
 	github.com/gin-contrib/cors v1.5.0
