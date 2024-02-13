@@ -12,7 +12,6 @@ import (
 
 func init() {
 	// initializers.LoadEnv()
-	initializers.LoadRedis()
 }
 
 type Member struct {
@@ -23,6 +22,7 @@ type Member struct {
 func main() {
 	// gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
+	initializers.LoadRedis()
 	config := cors.DefaultConfig()
 	config.AllowOrigins = []string{"https://card-game-puce.vercel.app"}
 
