@@ -11,6 +11,7 @@ import (
 )
 
 func init() {
+	initializers.LoadEnv()
 	initializers.LoadRedis()
 }
 

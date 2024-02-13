@@ -9,8 +9,10 @@ import (
 var RedisClient *redis.Client
 
 func LoadRedis() {
+
 	redisUrl := os.Getenv("REDIS_URL")
 	url := redisUrl
+
 	opts, err := redis.ParseURL(url)
 	if err != nil {
 		panic(err)
