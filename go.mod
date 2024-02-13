@@ -1,5 +1,6 @@
 module go-backend
 
+// +heroku goVersion go1.22
 go 1.22.0
 
 require (
