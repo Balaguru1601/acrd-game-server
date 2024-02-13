@@ -21,6 +21,7 @@ type Member struct {
 }
 
 func main() {
+	// gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 	config := cors.DefaultConfig()
 	config.AllowOrigins = []string{"https://card-game-puce.vercel.app"}
