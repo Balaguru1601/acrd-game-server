@@ -138,8 +138,10 @@ func main() {
 		}
 
 		c.JSON(200, gin.H{
-			"message": "Success",
-			"success": true,
+			"message":  "Success",
+			"success":  true,
+			"username": userData.Username,
+			"score":    userData.Score,
 		})
 
 	})
