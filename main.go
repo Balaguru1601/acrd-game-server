@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"go-backend/initializers"
 	"go-backend/redis"
+	"os"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -22,11 +23,17 @@ type Member struct {
 func main() {
 	// gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
-	initializers.LoadRedis()
 	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"https://card-game-puce.vercel.app"}
+	mode := os.Getenv("GIN_MODE")
+	initializers.LoadRedis()
 
-	r.Use(cors.New(config))
+	if mode == "release" {
+		config.AllowOrigins = []string{"https://card-game-puce.vercel.app"}
+		r.Use(cors.New(config))
+	} else {
+		println("in -> ")
+		r.Use(cors.Default())
+	}
 
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
